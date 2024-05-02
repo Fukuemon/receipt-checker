@@ -1,0 +1,35 @@
+name: 環境構築
+description: 環境構築・設定周りのタスク
+title: '🔧 environment: '
+body:
+  - type: textarea
+    id: overview
+    attributes:
+      label: 概要
+      description: 環境構築の概要を記載してください
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: タスク
+      description: タスクを記載してください
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: module
+    attributes:
+      label: 追加するモジュール
+      description: 追加するモジュールを記載してください
+      value: |
+        - 
+        - 
+  - type: textarea
+    id: note
+    attributes:
+      label: 備考
+      description: 環境構築・設定に関する備考を記載してください
+      placeholder:
