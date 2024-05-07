@@ -3,6 +3,39 @@ from fastapi import UploadFile
 import pandas as pd
 from const_data import managers, key_columns, check_columns, api_url, chatwork_base_url
 import os
+import csv
+
+
+def receipt_check(file_path, calendar_file):
+    calendar_ids = get_calendar_ids(calendar_file)
+    calendar_df, ibow_df = get_dataframes(file_path, calendar_ids)
+    results_df = merge_and_validate(calendar_df, ibow_df)
+    results_df = results_df[["訪問日", "利用者名", "主訪問者", "サービス内容", "開始時間_カレンダー", "終了時間_カレンダー", "提供時間_カレンダー", "開始時間_Ibow", "終了時間_Ibow", "提供時間_Ibow"]]
+    return results_df
+
+# カレンダーIDを取得
+def get_calendar_ids(calendar_ids_csv_path):
+    if calendar_ids_csv_path is None:
+        calendar_ids_csv_path = "./calendar_ids.csv"
+    return calendar_id_to_list(calendar_ids_csv_path)
+
+# カレンダーIDのCSVファイルを元にをリストに変換
+def calendar_id_to_list(csv_file):
+    # 空の辞書を作成
+    data_dict = {}
+
+    # CSVファイルを読み込んで辞書に変換する
+    with open(csv_file, newline='', encoding='utf-8') as f:
+        reader = csv.reader(f)  # タブ区切りの場合
+        next(reader)  # ヘッダーをスキップ
+        for row in reader:
+            name = row[0]  # 担当者名
+            calendar_id = row[1]  # カレンダーID
+            data_dict[name] = calendar_id
+
+    # 辞書から間まで連結した文字列に変換
+    result = result = ",".join(data_dict.values())
+    return result
 
 # ファイルを保存
 async def save_upload_file(upload_file: UploadFile):

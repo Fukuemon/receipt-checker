@@ -1,15 +1,15 @@
-from fastapi import FastAPI, UploadFile, Request, Form, File
+from fastapi import FastAPI, UploadFile, Request, File
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi import status
-from function import save_upload_file, get_dataframes, merge_and_validate, send_alerts
+from function import receipt_check
 from pydantic import BaseModel
 
 app = FastAPI()
 
 class RequestModel(BaseModel):
-    upload_file: UploadFile
-    calendar_ids: list[int]
+    receipt_file: UploadFile
+    calendar_id_file: UploadFile
 
 @app.get("/hello")
 async def read_root():
@@ -25,12 +25,11 @@ async def handler(request:Request, exc:RequestValidationError):
 
 @app.post("/receipt_check")
 async def receipt_check(
-        upload_file: UploadFile = File(...),
-        calendar_ids: str = Form(...)
+        receipt_file: UploadFile = File(...),
+        calendar_id_file: UploadFile = File(...)
     ):
-    file_path = await save_upload_file(upload_file)
-    calendar_df, ibow_df = get_dataframes(file_path,calendar_ids)
-    results_df = merge_and_validate(calendar_df, ibow_df)
+
+    results_df = receipt_check(receipt_file, calendar_id_file)
 
     return results_df.to_json(orient="records", force_ascii=False)
     # Chatworkにアラートを送信
