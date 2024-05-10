@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import customtkinter
 import os
-from function import receipt_check
+from server.libs.function import receipt_check
 
 FONT_TYPE = "meiryo"
 PRIMARY = "blue"
@@ -26,7 +26,8 @@ class ReadCsvFrame(customtkinter.CTkFrame):
         self.textbox.grid(row=1, column=0, padx=10, pady=(0, 10), sticky="ew")
 
         self.button_select = customtkinter.CTkButton(self, command=self.button_select_callback, text="ファイル選択",
-                                                     fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), font=self.fonts)
+                                                     fg_color="transparent", border_width=2,
+                                                     text_color=("gray10", "#DCE4EE"), font=self.fonts)
         self.button_select.grid(row=1, column=1, padx=10, pady=(0, 10))
 
     def button_select_callback(self):
@@ -51,11 +52,15 @@ class ReadCsvFrame(customtkinter.CTkFrame):
 
 class ReadReceiptCsvFrame(ReadCsvFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, header_name="レセプトファイル選択", placeholder_text="レセプトのCSVファイルを読み込む", **kwargs)
+        super().__init__(master, header_name="IbowのCSVファイルを選択", placeholder_text="ファイルを選択（CSV形式）",
+                         **kwargs)
+
 
 class ReadCalendarIdsCsvFrame(ReadCsvFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, header_name="カレンダーファイル選択", placeholder_text="カレンダーIDのCSVファイルを読み込む", **kwargs)
+        super().__init__(master, header_name="カレンダーIDが入力されたCSVファイルを選択",
+                         placeholder_text="ファイルを選択（CSV形式）", **kwargs)
+
 
 class DataDisplayFrame(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
@@ -71,7 +76,7 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.label = customtkinter.CTkLabel(self, text="照合結果", font=(FONT_TYPE, 11))
+        self.label = customtkinter.CTkLabel(self, text="不一致データ", font=(FONT_TYPE, 11))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
         self.tree = ttk.Treeview(self, show="headings")
         self.tree.grid(row=1, column=0, columnspan=3, padx=10, pady=0, sticky="nsew")
@@ -135,7 +140,8 @@ class App(customtkinter.CTk):
         self.calendar_frame = ReadCalendarIdsCsvFrame(self)
         self.calendar_frame.grid(row=1, column=0, padx=20, pady=(10, 0), sticky="ew")
 
-        self.button_execute = customtkinter.CTkButton(self, text="実行", command=self.button_execute_callback, font=self.fonts)
+        self.button_execute = customtkinter.CTkButton(self, text="実行", command=self.button_execute_callback,
+                                                      font=self.fonts)
         self.button_execute.grid(row=2, column=0, padx=20, pady=(10, 20))
 
         self.data_display_frame = DataDisplayFrame(self)
@@ -153,7 +159,7 @@ class App(customtkinter.CTk):
         except Exception as e:
             messagebox.showerror("エラー", f"処理中にエラーが発生しました: {str(e)}")
 
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()
-

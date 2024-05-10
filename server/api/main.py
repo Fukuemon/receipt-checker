@@ -2,8 +2,13 @@ from fastapi import FastAPI, UploadFile, Request, File
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi import status
-from function import receipt_check
 from pydantic import BaseModel
+
+import sys
+
+sys.path.append("/")
+from server.libs.api_function import receipt_check
+
 
 app = FastAPI()
 
@@ -24,7 +29,7 @@ async def handler(request:Request, exc:RequestValidationError):
     )
 
 @app.post("/receipt_check")
-async def receipt_check(
+async def receipt_check_handler(
         receipt_file: UploadFile = File(...),
         calendar_id_file: UploadFile = File(...)
     ):
