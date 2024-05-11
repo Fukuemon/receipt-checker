@@ -2,7 +2,7 @@
 # GoogleカレンダーapiのURLを指定
 api_url = 'https://script.google.com/macros/s/AKfycbyO7wJQzdTnQie7at51L5Ex606aq9wHlNDpp6cZ_8qpczpCHsItAUnBf2RrDBgjm0Cl/exec'
 
-calendar_ids = {
+default_calendar_ids = {
  "笠間　律子": "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com",
  "竹房　和美": "c_d941630c89637f830aacdab897a4d6324090f005c36b1b1b54f6b6b8f39cce95@group.calendar.google.com"
 }
