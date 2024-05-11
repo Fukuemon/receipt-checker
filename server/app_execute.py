@@ -52,7 +52,7 @@ class ReadCsvFrame(customtkinter.CTkFrame):
 
 class ReadReceiptCsvFrame(ReadCsvFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, header_name="IbowのCSVファイルを選択", placeholder_text="ファイルを選択（CSV形式）",
+        super().__init__(master, header_name="Ibowから出力されたCSVファイルを選択", placeholder_text="ファイルを選択（CSV形式）",
                          **kwargs)
 
 
@@ -76,7 +76,7 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.label = customtkinter.CTkLabel(self, text="不一致データ", font=(FONT_TYPE, 11))
+        self.label = customtkinter.CTkLabel(self, text="不整合データ", font=(FONT_TYPE, 11))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
         self.tree = ttk.Treeview(self, show="headings")
         self.tree.grid(row=1, column=0, columnspan=3, padx=10, pady=0, sticky="nsew")
@@ -95,6 +95,11 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.button_download.grid(row=3, column=0, columnspan=3, padx=10, pady=10)
 
     def display_dataframe(self, df):
+        if df is None:
+            for column in self.tree.get_children():
+                self.tree.delete(column)
+            return
+
         for column in self.tree.get_children():
             self.tree.delete(column)
 
@@ -148,16 +153,22 @@ class App(customtkinter.CTk):
         self.data_display_frame.grid(row=3, column=0, padx=20, pady=10, sticky="nsew")
 
     def button_execute_callback(self):
+        self.data_display_frame.display_dataframe(None)
         receipt_file = self.receipt_frame.file_path
         calendar_file = self.calendar_frame.file_path
         if not receipt_file or not calendar_file:
-            messagebox.showwarning("警告", "レセプトファイルおよびカレンダーファイルを選択してください")
+            messagebox.showwarning("エラー", "レセプトファイルおよびカレンダーファイルを選択してください")
             return
         try:
             result_df = receipt_check(receipt_file, calendar_file)
             self.data_display_frame.display_dataframe(result_df)
-        except Exception as e:
-            messagebox.showerror("エラー", f"処理中にエラーが発生しました: {str(e)}")
+        finally:
+            result_df = None
+            self.receipt_frame.file_path = None
+            self.calendar_frame.file_path = None
+            self.receipt_frame.textbox.delete(0, tk.END)
+            self.calendar_frame.textbox.delete(0, tk.END)
+
 
 
 if __name__ == "__main__":
