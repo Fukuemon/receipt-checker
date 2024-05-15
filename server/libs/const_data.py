@@ -1,5 +1,5 @@
 # GoogleカレンダーapiのURLを指定
-api_url = 'https://script.google.com/macros/s/AKfycbws2QiTAYc9TxoVmQj87jtNJf_u8hczDEaO0o4WHYiCt8i3W9dYNr1bbQB0lCadyS0y/exec'
+api_url = 'https://script.google.com/macros/s/AKfycbxBZ55s_KiGC8xGTpdoihdi14kJ7LSr9IPmy2bkxiNbZZNjJw8JOjpFV0rDuTiDZjnT/exec'
 
 default_calendar_ids = {
  "笠間　律子": "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com",
