@@ -30,7 +30,7 @@ def calendar_ids_from_csv(csv_file):
 
         # 最低限必要なカラムが存在するかチェック
         if '担当者名' not in df.columns or 'カレンダーID' not in df.columns:
-            messagebox.showerror("エラー", "カレンダーIDのCSVファイルを確認してください。")
+            messagebox.showerror("エラー", "カレンダーIDのファイルが誤っています。正しいファイルが選択されているか確認してください。")
             raise ValueError("カレンダーIDのCSVファイルを確認してください。")
         # カレンダーIDのリストを取得し、カンマ区切りの文字列に変換
         result = ",".join(df['カレンダーID'].astype(str).tolist())
@@ -56,22 +56,13 @@ def create_google_calendar_to_csv(url):
             return calendar_df
         elif response.status_code == 500:
             messagebox.showerror("エラー",
-                                 "Googleカレンダーのデータフレーム作成に失敗しました: 開発者にお問い合わせください。")
-            raise ValueError("Googleカレンダーのデータフレーム作成に失敗しました: 開発者にお問い合わせください。")
+                                 "データの取得に失敗しました: 開発者にお問い合わせください。")
+            raise ValueError("データの取得に失敗しました: 開発者にお問い合わせください。")
     except Exception:
         messagebox.showerror("エラー",
-                             "Googleカレンダーのデータフレーム作成に失敗しました: カレンダーIDのCSVファイルを確認してください。")
+                             "Googleカレンダーの取得に失敗しました: カレンダーIDのファイルに誤りがないか確認してください。")
         raise ValueError(
-            "Googleカレンダーのデータフレーム作成に失敗しました: カレンダーIDのCSVファイルを確認してください。")
-
-    response = requests.get(url)
-    if response.status_code == 200:
-        calendar_df = pd.read_csv(io.BytesIO(response.content), sep=",")
-        print(calendar_df)
-        return calendar_df
-    else:
-        print("エラーが発生しました。ステータスコード:", response.status_code)
-
+            "Googleカレンダーの取得に失敗しました: カレンダーIDのファイルに誤りがないか確認してください。")
 
 # 開始時間と終了時間のフォーマットを統一
 def start_end_dateformat(df_1, df_2):
@@ -108,8 +99,8 @@ def get_dataframes(file_path: Path, calendar_ids: str) -> tuple[pd.DataFrame, pd
                               usecols=["訪問日", "利用者名", "開始時間", "終了時間", "提供時間", "サービス内容",
                                        "主訪問者"])
     except Exception:
-        messagebox.showerror("エラー", "IbowのCSVファイルの内容を確認してください")
-        raise ValueError("IbowのCSVファイルの内容を確認してください")
+        messagebox.showerror("エラー", "Ibowのファイルが誤っています。正しいファイルが選択されているか確認してください。")
+        raise ValueError("Ibowのファイルが誤っています。正しいファイルが選択されているか確認してください。")
 
     # 日付フォーマットを統一
     start_end_dateformat(calendar_df, ibow_df)
