@@ -25,7 +25,7 @@ class ReadCsvFrame(customtkinter.CTkFrame):
         self.textbox = customtkinter.CTkEntry(self, placeholder_text=placeholder_text, width=120, font=self.fonts)
         self.textbox.grid(row=1, column=0, padx=10, pady=(0, 10), sticky="ew")
 
-        self.button_select = customtkinter.CTkButton(self, command=self.button_select_callback, text="ファイル選択",
+        self.button_select = customtkinter.CTkButton(self, command=self.button_select_callback, text="ファイルを選択",
                                                      fg_color="transparent", border_width=2,
                                                      text_color=("gray10", "#DCE4EE"), font=self.fonts)
         self.button_select.grid(row=1, column=1, padx=10, pady=(0, 10))
@@ -52,14 +52,14 @@ class ReadCsvFrame(customtkinter.CTkFrame):
 
 class ReadReceiptCsvFrame(ReadCsvFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, header_name="Ibowから出力されたCSVファイルを選択", placeholder_text="ファイルを選択（CSV形式）",
+        super().__init__(master, header_name="Ibowから出力したCSVファイルを選択", placeholder_text="ファイルが選択されていません",
                          **kwargs)
 
 
 class ReadCalendarIdsCsvFrame(ReadCsvFrame):
     def __init__(self, master, **kwargs):
-        super().__init__(master, header_name="カレンダーIDが入力されたCSVファイルを選択",
-                         placeholder_text="ファイルを選択（CSV形式）", **kwargs)
+        super().__init__(master, header_name="カレンダーIDが入力したCSVファイルを選択",
+                         placeholder_text="ファイルが選択されていません", **kwargs)
 
 
 class DataDisplayFrame(customtkinter.CTkFrame):
@@ -90,18 +90,28 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.tree.configure(xscrollcommand=self.scroll_x.set)
 
         self.button_download = customtkinter.CTkButton(master=self, command=self.download_csv,
-                                                       text="CSVとしてダウンロード",
+                                                       text="CSV形式でダウンロード",
                                                        font=self.fonts)
         self.button_download.grid(row=3, column=0, columnspan=3, padx=10, pady=10)
 
-    def display_dataframe(self, df):
-        if df is None:
-            for column in self.tree.get_children():
-                self.tree.delete(column)
-            return
-
+    def display_text(self, text):
         for column in self.tree.get_children():
             self.tree.delete(column)
+
+        self.tree["columns"] = ["message"]
+        self.tree.heading("message", text=text)
+        self.tree.column("message", width=100)
+
+    def display_dataframe(self, df):
+        for column in self.tree.get_children():
+            self.tree.delete(column)
+
+        if df is None:
+            self.display_text("表示するデータがありません")
+            return
+        if df.shape[0] == 0:
+            self.display_text("不整合データはありません")
+            return
 
         self.tree["columns"] = list(df.columns)
 
@@ -116,7 +126,7 @@ class DataDisplayFrame(customtkinter.CTkFrame):
 
     def download_csv(self):
         if self.result_df is None:
-            messagebox.showwarning("警告", "表示するデータがありません")
+            self.display_text("表示するデータがありません")
             return
 
         save_path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSVファイル", "*.csv")])
@@ -145,7 +155,7 @@ class App(customtkinter.CTk):
         self.calendar_frame = ReadCalendarIdsCsvFrame(self)
         self.calendar_frame.grid(row=1, column=0, padx=20, pady=(10, 0), sticky="ew")
 
-        self.button_execute = customtkinter.CTkButton(self, text="実行", command=self.button_execute_callback,
+        self.button_execute = customtkinter.CTkButton(self, text="照合", command=self.button_execute_callback,
                                                       font=self.fonts)
         self.button_execute.grid(row=2, column=0, padx=20, pady=(10, 20))
 
@@ -157,7 +167,7 @@ class App(customtkinter.CTk):
         receipt_file = self.receipt_frame.file_path
         calendar_file = self.calendar_frame.file_path
         if not receipt_file or not calendar_file:
-            messagebox.showwarning("エラー", "レセプトファイルおよびカレンダーファイルを選択してください")
+            messagebox.showwarning("エラー", "ファイルが選択されていません")
             return
         try:
             result_df = receipt_check(receipt_file, calendar_file)
@@ -168,6 +178,9 @@ class App(customtkinter.CTk):
             self.calendar_frame.file_path = None
             self.receipt_frame.textbox.delete(0, tk.END)
             self.calendar_frame.textbox.delete(0, tk.END)
+            self.receipt_frame.textbox.insert(0, "ファイルが選択されていません")
+
+            self.calendar_frame.textbox.insert(0, "ファイルが選択されていません")
 
 
 
