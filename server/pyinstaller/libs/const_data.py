@@ -1,11 +1,13 @@
 
 # GoogleカレンダーapiのURLを指定
-api_url = 'https://script.google.com/macros/s/AKfycbxBZ55s_KiGC8xGTpdoihdi14kJ7LSr9IPmy2bkxiNbZZNjJw8JOjpFV0rDuTiDZjnT/exec'
+calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwJx2I7G-UIDwH8FRVf0gwc-44voA3301H6ttfCm_yOMd1q7DZnCozbDcuFFoyHJbjqXQ/exec"
 
 default_calendar_ids = {
  "笠間　律子": "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com",
  "竹房　和美": "c_d941630c89637f830aacdab897a4d6324090f005c36b1b1b54f6b6b8f39cce95@group.calendar.google.com"
 }
+
+columns_to_replace = ['主訪問者', '利用者名', 'サービス内容']
 
 # サービスコードを指定
 service_code = {
@@ -30,7 +32,7 @@ managers = {
 }
 
 # マージのキーカラムを指定
-key_columns = ['訪問日', '利用者名', '主訪問者', 'サービス内容']
+key_columns = ['訪問日', '利用者名', '主訪問者']
 # 照合するカラムを指定
 check_columns = ['開始時間', '終了時間', '提供時間']
 
