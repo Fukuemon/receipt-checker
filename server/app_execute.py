@@ -122,7 +122,7 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.tree.tag_configure('boundary', background='lightgray')
 
         for index, row in df.iterrows():
-            tag = 'boundary' if row['訪問日'] in ['不整合データ', '整合データ', 'カレンダーにのみ', 'Ibowのみ'] else ''
+            tag = 'boundary' if row['訪問日'] in ['不整合データ', '整合データ', 'カレンダーのみ', 'Ibowのみ'] else ''
             self.tree.insert("", tk.END, values=list(row), tags=(tag,))
 
         self.result_df = df
