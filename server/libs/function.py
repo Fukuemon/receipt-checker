@@ -94,7 +94,7 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     """
     カレンダーとibowのデータフレームをマージし、不整合データを取得する
     :param calendar_df: カレンダーのデータフレーム
-    :param ibow_df:
+    :param ibow_df: ibowのデータフレーム
     :return filtered_df: 不整合データのデータフレーム
     """
     # 訪問日を日付型に変換
@@ -106,13 +106,17 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     ibow_df['訪問日'] = pd.to_datetime(ibow_df['訪問日']).dt.tz_localize('Asia/Tokyo',
                                                                          ambiguous='infer').dt.tz_localize(None).dt.date
 
-    # データフレームをマージ
-    merged_df = pd.merge(calendar_df, ibow_df, on=key_columns, suffixes=('_カレンダー', '_Ibow'))
+    # データフレームをマージ（片方しかデータがないものも出力するようにouter joinを使用）
+    merged_df = pd.merge(calendar_df, ibow_df, on=key_columns, suffixes=('_カレンダー', '_Ibow'), how='outer')
+
+    # 不整合チェック
     for column in check_columns:
         merged_df[column + '_match'] = merged_df[column + '_カレンダー'] == merged_df[column + '_Ibow']
 
+    # 不整合データをフィルタリング
     filtered_df = merged_df[(merged_df['開始時間_match'] == False) |
-                            (merged_df['終了時間_match'] == False) &
-                            (merged_df['提供時間_match'] == False)]
+                            (merged_df['終了時間_match'] == False) |
+                            (merged_df['提供時間_match'] == False) |
+                            (merged_df['サービス内容_match'] == False)]
 
     return filtered_df

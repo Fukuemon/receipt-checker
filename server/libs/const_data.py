@@ -34,7 +34,7 @@ managers = {
 # マージのキーカラムを指定
 key_columns = ['訪問日', '利用者名', '主訪問者']
 # 照合するカラムを指定
-check_columns = ['開始時間', '終了時間', '提供時間']
+check_columns = ['開始時間', '終了時間', '提供時間', 'サービス内容']
 
 # ChatworkのAPIのURLを指定
 chatwork_base_url = "https://api.chatwork.com/v2"
