@@ -10,9 +10,9 @@ def receipt_check(receipt_file):
     calendar_df, ibow_df = get_dataframes(receipt_file)
     results_df = merge_and_validate(calendar_df, ibow_df)
     results_df = results_df[
-        ["訪問日", "利用者名", "主訪問者", "サービス内容_Ibow", "サービス内容_カレンダー", "開始時間_カレンダー", "開始時間_Ibow",
-         "終了時間_カレンダー", "終了時間_Ibow",
-         "提供時間_カレンダー", "提供時間_Ibow"]]
+        ["訪問日", "利用者名", "主訪問者", "サービス内容_Ibow", "サービス内容_カレンダー","開始時間_Ibow", "開始時間_カレンダー",
+         "終了時間_Ibow", "終了時間_カレンダー",
+         "提供時間_Ibow","提供時間_カレンダー"]]
     return results_df
 
 
@@ -59,7 +59,7 @@ def replace_fullwidth_to_halfwidth_space(df: pd.DataFrame, columns: list) -> Non
     :return: None
     """
     for column in columns:
-        df[column] = df[column].apply(lambda text: text.replace('　', ' '))
+        df[column] = df[column].apply(lambda text: text.replace('　', ' ') if isinstance(text, str) else text)
 
 
 def get_dataframes(file_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -90,6 +90,10 @@ def get_dataframes(file_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     return calendar_df, ibow_df
 
 
+import pandas as pd
+
+import pandas as pd
+
 def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.DataFrame:
     """
     カレンダーとibowのデータフレームをマージし、不整合データを取得する
@@ -98,16 +102,22 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     :return final_df: 不整合データと整合データを結合したデータフレーム
     """
     # 訪問日を日付型に変換
-    calendar_df = calendar_df.sort_values(by=['訪問日', '開始時間'])
+    calendar_df['訪問日'] = pd.to_datetime(calendar_df['訪問日']).dt.tz_localize('Asia/Tokyo', ambiguous='infer').dt.tz_localize(None).dt.date
+    ibow_df['訪問日'] = pd.to_datetime(ibow_df['訪問日']).dt.tz_localize('Asia/Tokyo', ambiguous='infer').dt.tz_localize(None).dt.date
 
-    # 日付を調整
-    calendar_df['訪問日'] = pd.to_datetime(calendar_df['訪問日']).dt.tz_localize('Asia/Tokyo',
-                                                                                 ambiguous='infer').dt.tz_localize(None).dt.date
-    ibow_df['訪問日'] = pd.to_datetime(ibow_df['訪問日']).dt.tz_localize('Asia/Tokyo',
-                                                                         ambiguous='infer').dt.tz_localize(None).dt.date
+    # データフレームをソート
+    calendar_df = calendar_df.sort_values(by=['訪問日', '開始時間'])
+    ibow_df = ibow_df.sort_values(by=['訪問日', '開始時間'])
 
     # データフレームをマージ（片方しかデータがないものも出力するようにouter joinを使用）
     merged_df = pd.merge(calendar_df, ibow_df, on=key_columns, suffixes=('_カレンダー', '_Ibow'), how='outer')
+
+    # 片方しかないデータをフィルタリング
+    calendar_only_df = merged_df[merged_df[[col + '_Ibow' for col in check_columns]].isnull().all(axis=1)]
+    ibow_only_df = merged_df[merged_df[[col + '_カレンダー' for col in check_columns]].isnull().all(axis=1)]
+
+    # 片方しかないデータを除いたデータフレーム
+    merged_df = merged_df[~(merged_df.index.isin(calendar_only_df.index) | merged_df.index.isin(ibow_only_df.index))]
 
     # 不整合チェック
     for column in check_columns:
@@ -126,13 +136,21 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
                            (merged_df['サービス内容_match'] == True)]
 
     # 境界線を作成
-    boundary_df = pd.DataFrame({col: ['---'] for col in ["訪問日", "利用者名", "主訪問者",
-                                                         "サービス内容_Ibow", "サービス内容_カレンダー",
-                                                         "開始時間_カレンダー", "開始時間_Ibow",
-                                                         "終了時間_カレンダー", "終了時間_Ibow",
-                                                         "提供時間_カレンダー", "提供時間_Ibow"]})
+    boundary_mismatched_df = pd.DataFrame({col: ['---'] for col in merged_df.columns})
+    boundary_mismatched_df['訪問日'] = '不整合データ'
 
-    # 不整合データ、境界線、整合データを結合
-    final_df = pd.concat([mismatched_df, boundary_df, matched_df], ignore_index=True)
+    boundary_matched_df = pd.DataFrame({col: ['---'] for col in merged_df.columns})
+    boundary_matched_df['訪問日'] = '整合データ'
+
+    boundary_calendar_only_df = pd.DataFrame({col: ['---'] for col in merged_df.columns})
+    boundary_calendar_only_df['訪問日'] = 'カレンダーのみ'
+
+    boundary_ibow_only_df = pd.DataFrame({col: ['---'] for col in merged_df.columns})
+    boundary_ibow_only_df['訪問日'] = 'Ibowのみ'
+
+    # 最終データフレームを結合
+    final_df = pd.concat([boundary_mismatched_df,mismatched_df,
+                          boundary_calendar_only_df,calendar_only_df,  boundary_ibow_only_df, ibow_only_df,boundary_matched_df,matched_df], ignore_index=True)
 
     return final_df
+

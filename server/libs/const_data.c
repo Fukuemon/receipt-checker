@@ -1784,7 +1784,7 @@ static const char __pyx_k_default_calendar_ids[] = "default_calendar_ids";
 static const char __pyx_k_https_api_chatwork_com_v2[] = "https://api.chatwork.com/v2";
 static const char __pyx_k_c_5cdab208784f5f4d735eace490690d[] = "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com";
 static const char __pyx_k_c_d941630c89637f830aacdab897a4d6[] = "c_d941630c89637f830aacdab897a4d6324090f005c36b1b1b54f6b6b8f39cce95@group.calendar.google.com";
-static const char __pyx_k_https_script_google_com_macros_s[] = "https://script.google.com/macros/s/AKfycbwJx2I7G-UIDwH8FRVf0gwc-44voA3301H6ttfCm_yOMd1q7DZnCozbDcuFFoyHJbjqXQ/exec";
+static const char __pyx_k_https_script_google_com_macros_s[] = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec";
 /* #### Code section: decls ### */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2526,7 +2526,7 @@ if (!__Pyx_RefNanny) {
   /* "libs/const_data.py":3
  * 
  * # GoogleapiURL
- * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwJx2I7G-UIDwH8FRVf0gwc-44voA3301H6ttfCm_yOMd1q7DZnCozbDcuFFoyHJbjqXQ/exec"             # <<<<<<<<<<<<<<
+ * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"             # <<<<<<<<<<<<<<
  * 
  * default_calendar_ids = {
  */
@@ -2660,7 +2660,7 @@ if (!__Pyx_RefNanny) {
   /* "libs/const_data.py":2
  * 
  * # GoogleapiURL             # <<<<<<<<<<<<<<
- * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwJx2I7G-UIDwH8FRVf0gwc-44voA3301H6ttfCm_yOMd1q7DZnCozbDcuFFoyHJbjqXQ/exec"
+ * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"
  * 
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)

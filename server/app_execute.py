@@ -115,13 +115,15 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         style.theme_use("default")
 
         for col in df.columns:
-            print(col)
             self.tree.heading(col, text=col)
             self.tree.column(col, width=100)
 
+        # タグの設定
+        self.tree.tag_configure('boundary', background='lightgray')
+
         for index, row in df.iterrows():
-            print(row)
-            self.tree.insert("", tk.END, values=list(row))
+            tag = 'boundary' if row['訪問日'] in ['不整合データ', '整合データ', 'カレンダーにのみ', 'Ibowのみ'] else ''
+            self.tree.insert("", tk.END, values=list(row), tags=(tag,))
 
         self.result_df = df
 
