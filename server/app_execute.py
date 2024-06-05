@@ -69,7 +69,7 @@ class DataDisplayFrame(customtkinter.CTkFrame):
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.label = customtkinter.CTkLabel(self, text="不整合データ", font=("Arial", 11))
+        self.label = customtkinter.CTkLabel(self, text="照合結果", font=("Arial", 11))
         self.label.grid(row=0, column=0, padx=20, sticky="w")
         self.tree = ttk.Treeview(self, show="headings")
         self.tree.grid(row=1, column=0, columnspan=3, padx=10, pady=0, sticky="nsew")

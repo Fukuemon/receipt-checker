@@ -95,7 +95,7 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     カレンダーとibowのデータフレームをマージし、不整合データを取得する
     :param calendar_df: カレンダーのデータフレーム
     :param ibow_df: ibowのデータフレーム
-    :return filtered_df: 不整合データのデータフレーム
+    :return final_df: 不整合データと整合データを結合したデータフレーム
     """
     # 訪問日を日付型に変換
     calendar_df = calendar_df.sort_values(by=['訪問日', '開始時間'])
@@ -114,9 +114,25 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
         merged_df[column + '_match'] = merged_df[column + '_カレンダー'] == merged_df[column + '_Ibow']
 
     # 不整合データをフィルタリング
-    filtered_df = merged_df[(merged_df['開始時間_match'] == False) |
-                            (merged_df['終了時間_match'] == False) |
-                            (merged_df['提供時間_match'] == False) |
-                            (merged_df['サービス内容_match'] == False)]
+    mismatched_df = merged_df[(merged_df['開始時間_match'] == False) |
+                              (merged_df['終了時間_match'] == False) |
+                              (merged_df['提供時間_match'] == False) |
+                              (merged_df['サービス内容_match'] == False)]
 
-    return filtered_df
+    # 整合データをフィルタリング
+    matched_df = merged_df[(merged_df['開始時間_match'] == True) &
+                           (merged_df['終了時間_match'] == True) &
+                           (merged_df['提供時間_match'] == True) &
+                           (merged_df['サービス内容_match'] == True)]
+
+    # 境界線を作成
+    boundary_df = pd.DataFrame({col: ['---'] for col in ["訪問日", "利用者名", "主訪問者",
+                                                         "サービス内容_Ibow", "サービス内容_カレンダー",
+                                                         "開始時間_カレンダー", "開始時間_Ibow",
+                                                         "終了時間_カレンダー", "終了時間_Ibow",
+                                                         "提供時間_カレンダー", "提供時間_Ibow"]})
+
+    # 不整合データ、境界線、整合データを結合
+    final_df = pd.concat([mismatched_df, boundary_df, matched_df], ignore_index=True)
+
+    return final_df
