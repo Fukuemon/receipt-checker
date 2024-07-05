@@ -1,6 +1,6 @@
 
 # GoogleカレンダーapiのURLを指定
-calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwJx2I7G-UIDwH8FRVf0gwc-44voA3301H6ttfCm_yOMd1q7DZnCozbDcuFFoyHJbjqXQ/exec"
+calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"
 
 default_calendar_ids = {
  "笠間　律子": "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com",
@@ -34,7 +34,7 @@ managers = {
 # マージのキーカラムを指定
 key_columns = ['訪問日', '利用者名', '主訪問者']
 # 照合するカラムを指定
-check_columns = ['開始時間', '終了時間', '提供時間']
+check_columns = ['開始時間', '終了時間', '提供時間', 'サービス内容']
 
 # ChatworkのAPIのURLを指定
 chatwork_base_url = "https://api.chatwork.com/v2"

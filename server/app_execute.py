@@ -172,7 +172,6 @@ class App(customtkinter.CTk):
             return
         try:
             result_df = receipt_check(receipt_file)
-            print(result_df)
             self.data_display_frame.display_dataframe(result_df)
         finally:
             result_df = None

@@ -10,9 +10,10 @@ def receipt_check(receipt_file):
     calendar_df, ibow_df = get_dataframes(receipt_file)
     results_df = merge_and_validate(calendar_df, ibow_df)
     results_df = results_df[
-        ["訪問日", "利用者名", "主訪問者", "サービス内容_Ibow", "サービス内容_カレンダー","開始時間_Ibow", "開始時間_カレンダー",
+        ["訪問日", "利用者名", "主訪問者", "サービス内容_Ibow", "サービス内容_カレンダー", "開始時間_Ibow",
+         "開始時間_カレンダー",
          "終了時間_Ibow", "終了時間_カレンダー",
-         "提供時間_Ibow","提供時間_カレンダー"]]
+         "提供時間_Ibow", "提供時間_カレンダー"]]
     return results_df
 
 
@@ -90,10 +91,6 @@ def get_dataframes(file_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     return calendar_df, ibow_df
 
 
-import pandas as pd
-
-import pandas as pd
-
 def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.DataFrame:
     """
     カレンダーとibowのデータフレームをマージし、不整合データを取得する
@@ -101,13 +98,21 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     :param ibow_df: ibowのデータフレーム
     :return final_df: 不整合データと整合データを結合したデータフレーム
     """
+
     # 訪問日を日付型に変換
-    calendar_df['訪問日'] = pd.to_datetime(calendar_df['訪問日']).dt.tz_localize('Asia/Tokyo', ambiguous='infer').dt.tz_localize(None).dt.date
-    ibow_df['訪問日'] = pd.to_datetime(ibow_df['訪問日']).dt.tz_localize('Asia/Tokyo', ambiguous='infer').dt.tz_localize(None).dt.date
+    calendar_df['訪問日'] = pd.to_datetime(calendar_df['訪問日']).dt.tz_localize('Asia/Tokyo',
+                                                                                 ambiguous='infer').dt.tz_localize(
+        None).dt.date
+    ibow_df['訪問日'] = pd.to_datetime(ibow_df['訪問日']).dt.tz_localize('Asia/Tokyo',
+                                                                         ambiguous='infer').dt.tz_localize(None).dt.date
 
     # データフレームをソート
     calendar_df = calendar_df.sort_values(by=['訪問日', '開始時間'])
     ibow_df = ibow_df.sort_values(by=['訪問日', '開始時間'])
+
+    # 利用者名の空白を無視するために、全ての空白を削除
+    calendar_df['利用者名'] = calendar_df['利用者名'].str.replace(' ', '')
+    ibow_df['利用者名'] = ibow_df['利用者名'].str.replace(' ', '')
 
     # データフレームをマージ（片方しかデータがないものも出力するようにouter joinを使用）
     merged_df = pd.merge(calendar_df, ibow_df, on=key_columns, suffixes=('_カレンダー', '_Ibow'), how='outer')
@@ -119,21 +124,55 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     # 片方しかないデータを除いたデータフレーム
     merged_df = merged_df[~(merged_df.index.isin(calendar_only_df.index) | merged_df.index.isin(ibow_only_df.index))]
 
-    # 不整合チェック
     for column in check_columns:
-        merged_df[column + '_match'] = merged_df[column + '_カレンダー'] == merged_df[column + '_Ibow']
+        if column == 'サービス内容':
+            merged_df[column + '_match'] = merged_df.apply(
+                lambda row: (row[column + '_カレンダー'] == row[column + '_Ibow']) or
+                            (row[column + '_カレンダー'] == '医' and '基本療養費' in row[column + '_Ibow']), axis=1)
+        else:
+            merged_df[column + '_match'] = merged_df[column + '_カレンダー'] == merged_df[column + '_Ibow']
+
+    # サービス内容と提供時間の整合性チェック
+    # サービス内容と提供時間の整合性チェック
+    def validate_service_time(service, time):
+        if service in ['訪看Ⅰ２', '予防訪看Ⅰ２'] and 20 <= time <= 29:
+            return True
+        if service in ['訪看Ⅰ３', '予防訪看Ⅰ３'] and 30 <= time <= 59:
+            return True
+        if service in ['訪看Ⅰ４', '予防訪看Ⅰ４'] and 60 <= time <= 89:
+            return True
+        if service in ['訪看Ⅰ５', '予防訪看Ⅰ５'] and 21 <= time <= 40:
+            return True
+        if service in ['訪看Ⅰ５2超', '予防訪看Ⅰ５2超'] and 41 <= time <= 60:
+            return True
+        if '基本療養費' in service or service == '医':
+            if 30 <= time <= 89:
+                return True
+        return False
+
+    print(merged_df)
+    # カレンダーとIbowの両方でチェック
+    merged_df['カレンダー_サービス時間_match'] = merged_df.apply(
+        lambda row: validate_service_time(row['サービス内容_カレンダー'], row['提供時間_カレンダー']), axis=1)
+
+    merged_df['Ibow_サービス時間_match'] = merged_df.apply(
+        lambda row: validate_service_time(row['サービス内容_Ibow'], row['提供時間_Ibow']), axis=1)
 
     # 不整合データをフィルタリング
     mismatched_df = merged_df[(merged_df['開始時間_match'] == False) |
                               (merged_df['終了時間_match'] == False) |
                               (merged_df['提供時間_match'] == False) |
-                              (merged_df['サービス内容_match'] == False)]
+                              (merged_df['サービス内容_match'] == False) |
+                              (merged_df['カレンダー_サービス時間_match'] == False) |
+                              (merged_df['Ibow_サービス時間_match'] == False)]
 
-    # 整合データをフィルタリング
+    # 整合データをフィルタリングÒ
     matched_df = merged_df[(merged_df['開始時間_match'] == True) &
                            (merged_df['終了時間_match'] == True) &
                            (merged_df['提供時間_match'] == True) &
-                           (merged_df['サービス内容_match'] == True)]
+                           (merged_df['サービス内容_match'] == True) &
+                           (merged_df['カレンダー_サービス時間_match'] == True) &
+                           (merged_df['Ibow_サービス時間_match'] == True)]
 
     # 境界線を作成
     boundary_mismatched_df = pd.DataFrame({col: ['---'] for col in merged_df.columns})
@@ -149,8 +188,8 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     boundary_ibow_only_df['訪問日'] = 'Ibowのみ'
 
     # 最終データフレームを結合
-    final_df = pd.concat([boundary_mismatched_df,mismatched_df,
-                          boundary_calendar_only_df,calendar_only_df,  boundary_ibow_only_df, ibow_only_df,boundary_matched_df,matched_df], ignore_index=True)
+    final_df = pd.concat([boundary_mismatched_df, mismatched_df,
+                          boundary_calendar_only_df, calendar_only_df, boundary_ibow_only_df, ibow_only_df,
+                          boundary_matched_df, matched_df], ignore_index=True)
 
     return final_df
-

@@ -1750,43 +1750,41 @@ int __pyx_module_is_main_libs__mymodule02 = 0;
 static const char __pyx_k_[] = "\347\254\240\351\226\223\343\200\200\345\276\213\345\255\220";
 static const char __pyx_k_2[] = "\350\250\252\347\234\213\342\205\240\357\274\2252\350\266\205";
 static const char __pyx_k__2[] = "\347\253\271\346\210\277\343\200\200\345\222\214\347\276\216";
-static const char __pyx_k__3[] = "\350\250\252\347\234\213\342\205\240\357\274\222";
-static const char __pyx_k__4[] = "\350\250\252\347\234\213\342\205\240\357\274\223";
-static const char __pyx_k__5[] = "\350\250\252\347\234\213\342\205\240\357\274\224";
-static const char __pyx_k__6[] = "\350\250\252\347\234\213\342\205\240\357\274\225";
-static const char __pyx_k__7[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\222";
-static const char __pyx_k__8[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\223";
-static const char __pyx_k__9[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\224";
+static const char __pyx_k__3[] = "\344\270\273\350\250\252\345\225\217\350\200\205";
+static const char __pyx_k__4[] = "\345\210\251\347\224\250\350\200\205\345\220\215";
+static const char __pyx_k__5[] = "\343\202\265\343\203\274\343\203\223\343\202\271\345\206\205\345\256\271";
+static const char __pyx_k__6[] = "\350\250\252\347\234\213\342\205\240\357\274\222";
+static const char __pyx_k__7[] = "\350\250\252\347\234\213\342\205\240\357\274\223";
+static const char __pyx_k__8[] = "\350\250\252\347\234\213\342\205\240\357\274\224";
+static const char __pyx_k__9[] = "\350\250\252\347\234\213\342\205\240\357\274\225";
 static const char __pyx_k_2_2[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\2252\350\266\205";
-static const char __pyx_k__10[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\225";
-static const char __pyx_k__11[] = "\350\250\252\345\225\217\346\227\245";
-static const char __pyx_k__12[] = "\345\210\251\347\224\250\350\200\205\345\220\215";
-static const char __pyx_k__13[] = "\344\270\273\350\250\252\345\225\217\350\200\205";
-static const char __pyx_k__14[] = "\343\202\265\343\203\274\343\203\223\343\202\271\345\206\205\345\256\271";
-static const char __pyx_k__15[] = "\351\226\213\345\247\213\346\231\202\351\226\223";
-static const char __pyx_k__16[] = "\347\265\202\344\272\206\346\231\202\351\226\223";
-static const char __pyx_k__17[] = "\346\217\220\344\276\233\346\231\202\351\226\223";
-static const char __pyx_k__18[] = "?";
+static const char __pyx_k__10[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\222";
+static const char __pyx_k__11[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\223";
+static const char __pyx_k__12[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\224";
+static const char __pyx_k__13[] = "\344\272\210\351\230\262\350\250\252\347\234\213\342\205\240\357\274\225";
+static const char __pyx_k__14[] = "\345\237\272\346\234\254\347\231\202\351\244\212\350\262\273\342\205\240\343\203\273\357\274\223\346\227\245";
+static const char __pyx_k__15[] = "\351\233\243\347\227\205\347\255\211\350\244\207\346\225\260\345\233\236\350\250\252\345\225\217\345\212\240\347\256\227(\357\274\222\345\233\236)";
+static const char __pyx_k__16[] = "\350\250\252\345\225\217\346\227\245";
+static const char __pyx_k__17[] = "\351\226\213\345\247\213\346\231\202\351\226\223";
+static const char __pyx_k__18[] = "\347\265\202\344\272\206\346\231\202\351\226\223";
+static const char __pyx_k__19[] = "\346\217\220\344\276\233\346\231\202\351\226\223";
+static const char __pyx_k__20[] = "?";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_20_29[] = "20-29";
-static const char __pyx_k_21_40[] = "21-40";
-static const char __pyx_k_30_59[] = "30-59";
-static const char __pyx_k_41_60[] = "41-60";
-static const char __pyx_k_60_89[] = "60-89";
-static const char __pyx_k_api_url[] = "api_url";
 static const char __pyx_k_managers[] = "managers";
 static const char __pyx_k_key_columns[] = "key_columns";
 static const char __pyx_k_service_code[] = "service_code";
 static const char __pyx_k_check_columns[] = "check_columns";
 static const char __pyx_k_chatwork_base_url[] = "chatwork_base_url";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_columns_to_replace[] = "columns_to_replace";
+static const char __pyx_k_calendar_gas_api_url[] = "calendar_gas_api_url";
 static const char __pyx_k_default_calendar_ids[] = "default_calendar_ids";
 static const char __pyx_k_https_api_chatwork_com_v2[] = "https://api.chatwork.com/v2";
 static const char __pyx_k_c_5cdab208784f5f4d735eace490690d[] = "c_5cdab208784f5f4d735eace490690d8ab8f12e57f1abd21edd32bca125206d70@group.calendar.google.com";
 static const char __pyx_k_c_d941630c89637f830aacdab897a4d6[] = "c_d941630c89637f830aacdab897a4d6324090f005c36b1b1b54f6b6b8f39cce95@group.calendar.google.com";
-static const char __pyx_k_https_script_google_com_macros_s[] = "https://script.google.com/macros/s/AKfycbyO7wJQzdTnQie7at51L5Ex606aq9wHlNDpp6cZ_8qpczpCHsItAUnBf2RrDBgjm0Cl/exec";
+static const char __pyx_k_https_script_google_com_macros_s[] = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec";
 /* #### Code section: decls ### */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -1819,22 +1817,19 @@ typedef struct {
   #endif
   PyObject *__pyx_kp_u_;
   PyObject *__pyx_n_u_2;
-  PyObject *__pyx_kp_u_20_29;
-  PyObject *__pyx_kp_u_21_40;
   PyObject *__pyx_n_u_2_2;
-  PyObject *__pyx_kp_u_30_59;
-  PyObject *__pyx_kp_u_41_60;
-  PyObject *__pyx_kp_u_60_89;
   PyObject *__pyx_n_u__10;
   PyObject *__pyx_n_u__11;
   PyObject *__pyx_n_u__12;
   PyObject *__pyx_n_u__13;
-  PyObject *__pyx_n_u__14;
-  PyObject *__pyx_n_u__15;
+  PyObject *__pyx_kp_u__14;
+  PyObject *__pyx_kp_u__15;
   PyObject *__pyx_n_u__16;
   PyObject *__pyx_n_u__17;
-  PyObject *__pyx_n_s__18;
+  PyObject *__pyx_n_u__18;
+  PyObject *__pyx_n_u__19;
   PyObject *__pyx_kp_u__2;
+  PyObject *__pyx_n_s__20;
   PyObject *__pyx_n_u__3;
   PyObject *__pyx_n_u__4;
   PyObject *__pyx_n_u__5;
@@ -1842,12 +1837,13 @@ typedef struct {
   PyObject *__pyx_n_u__7;
   PyObject *__pyx_n_u__8;
   PyObject *__pyx_n_u__9;
-  PyObject *__pyx_n_s_api_url;
   PyObject *__pyx_kp_u_c_5cdab208784f5f4d735eace490690d;
   PyObject *__pyx_kp_u_c_d941630c89637f830aacdab897a4d6;
+  PyObject *__pyx_n_s_calendar_gas_api_url;
   PyObject *__pyx_n_s_chatwork_base_url;
   PyObject *__pyx_n_s_check_columns;
   PyObject *__pyx_n_s_cline_in_traceback;
+  PyObject *__pyx_n_s_columns_to_replace;
   PyObject *__pyx_n_s_default_calendar_ids;
   PyObject *__pyx_kp_u_https_api_chatwork_com_v2;
   PyObject *__pyx_kp_u_https_script_google_com_macros_s;
@@ -1857,6 +1853,11 @@ typedef struct {
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_service_code;
   PyObject *__pyx_n_s_test;
+  PyObject *__pyx_int_29;
+  PyObject *__pyx_int_40;
+  PyObject *__pyx_int_59;
+  PyObject *__pyx_int_60;
+  PyObject *__pyx_int_89;
   PyObject *__pyx_int_358398312;
   PyObject *__pyx_int_358398319;
 } __pyx_mstate;
@@ -1903,22 +1904,19 @@ static int __pyx_m_clear(PyObject *m) {
   #endif
   Py_CLEAR(clear_module_state->__pyx_kp_u_);
   Py_CLEAR(clear_module_state->__pyx_n_u_2);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_20_29);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_21_40);
   Py_CLEAR(clear_module_state->__pyx_n_u_2_2);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_30_59);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_41_60);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_60_89);
   Py_CLEAR(clear_module_state->__pyx_n_u__10);
   Py_CLEAR(clear_module_state->__pyx_n_u__11);
   Py_CLEAR(clear_module_state->__pyx_n_u__12);
   Py_CLEAR(clear_module_state->__pyx_n_u__13);
-  Py_CLEAR(clear_module_state->__pyx_n_u__14);
-  Py_CLEAR(clear_module_state->__pyx_n_u__15);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__14);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__15);
   Py_CLEAR(clear_module_state->__pyx_n_u__16);
   Py_CLEAR(clear_module_state->__pyx_n_u__17);
-  Py_CLEAR(clear_module_state->__pyx_n_s__18);
+  Py_CLEAR(clear_module_state->__pyx_n_u__18);
+  Py_CLEAR(clear_module_state->__pyx_n_u__19);
   Py_CLEAR(clear_module_state->__pyx_kp_u__2);
+  Py_CLEAR(clear_module_state->__pyx_n_s__20);
   Py_CLEAR(clear_module_state->__pyx_n_u__3);
   Py_CLEAR(clear_module_state->__pyx_n_u__4);
   Py_CLEAR(clear_module_state->__pyx_n_u__5);
@@ -1926,12 +1924,13 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_u__7);
   Py_CLEAR(clear_module_state->__pyx_n_u__8);
   Py_CLEAR(clear_module_state->__pyx_n_u__9);
-  Py_CLEAR(clear_module_state->__pyx_n_s_api_url);
   Py_CLEAR(clear_module_state->__pyx_kp_u_c_5cdab208784f5f4d735eace490690d);
   Py_CLEAR(clear_module_state->__pyx_kp_u_c_d941630c89637f830aacdab897a4d6);
+  Py_CLEAR(clear_module_state->__pyx_n_s_calendar_gas_api_url);
   Py_CLEAR(clear_module_state->__pyx_n_s_chatwork_base_url);
   Py_CLEAR(clear_module_state->__pyx_n_s_check_columns);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
+  Py_CLEAR(clear_module_state->__pyx_n_s_columns_to_replace);
   Py_CLEAR(clear_module_state->__pyx_n_s_default_calendar_ids);
   Py_CLEAR(clear_module_state->__pyx_kp_u_https_api_chatwork_com_v2);
   Py_CLEAR(clear_module_state->__pyx_kp_u_https_script_google_com_macros_s);
@@ -1941,6 +1940,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_service_code);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
+  Py_CLEAR(clear_module_state->__pyx_int_29);
+  Py_CLEAR(clear_module_state->__pyx_int_40);
+  Py_CLEAR(clear_module_state->__pyx_int_59);
+  Py_CLEAR(clear_module_state->__pyx_int_60);
+  Py_CLEAR(clear_module_state->__pyx_int_89);
   Py_CLEAR(clear_module_state->__pyx_int_358398312);
   Py_CLEAR(clear_module_state->__pyx_int_358398319);
   return 0;
@@ -1965,22 +1969,19 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #endif
   Py_VISIT(traverse_module_state->__pyx_kp_u_);
   Py_VISIT(traverse_module_state->__pyx_n_u_2);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_20_29);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_21_40);
   Py_VISIT(traverse_module_state->__pyx_n_u_2_2);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_30_59);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_41_60);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_60_89);
   Py_VISIT(traverse_module_state->__pyx_n_u__10);
   Py_VISIT(traverse_module_state->__pyx_n_u__11);
   Py_VISIT(traverse_module_state->__pyx_n_u__12);
   Py_VISIT(traverse_module_state->__pyx_n_u__13);
-  Py_VISIT(traverse_module_state->__pyx_n_u__14);
-  Py_VISIT(traverse_module_state->__pyx_n_u__15);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__14);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__15);
   Py_VISIT(traverse_module_state->__pyx_n_u__16);
   Py_VISIT(traverse_module_state->__pyx_n_u__17);
-  Py_VISIT(traverse_module_state->__pyx_n_s__18);
+  Py_VISIT(traverse_module_state->__pyx_n_u__18);
+  Py_VISIT(traverse_module_state->__pyx_n_u__19);
   Py_VISIT(traverse_module_state->__pyx_kp_u__2);
+  Py_VISIT(traverse_module_state->__pyx_n_s__20);
   Py_VISIT(traverse_module_state->__pyx_n_u__3);
   Py_VISIT(traverse_module_state->__pyx_n_u__4);
   Py_VISIT(traverse_module_state->__pyx_n_u__5);
@@ -1988,12 +1989,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_u__7);
   Py_VISIT(traverse_module_state->__pyx_n_u__8);
   Py_VISIT(traverse_module_state->__pyx_n_u__9);
-  Py_VISIT(traverse_module_state->__pyx_n_s_api_url);
   Py_VISIT(traverse_module_state->__pyx_kp_u_c_5cdab208784f5f4d735eace490690d);
   Py_VISIT(traverse_module_state->__pyx_kp_u_c_d941630c89637f830aacdab897a4d6);
+  Py_VISIT(traverse_module_state->__pyx_n_s_calendar_gas_api_url);
   Py_VISIT(traverse_module_state->__pyx_n_s_chatwork_base_url);
   Py_VISIT(traverse_module_state->__pyx_n_s_check_columns);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
+  Py_VISIT(traverse_module_state->__pyx_n_s_columns_to_replace);
   Py_VISIT(traverse_module_state->__pyx_n_s_default_calendar_ids);
   Py_VISIT(traverse_module_state->__pyx_kp_u_https_api_chatwork_com_v2);
   Py_VISIT(traverse_module_state->__pyx_kp_u_https_script_google_com_macros_s);
@@ -2003,6 +2005,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_service_code);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
+  Py_VISIT(traverse_module_state->__pyx_int_29);
+  Py_VISIT(traverse_module_state->__pyx_int_40);
+  Py_VISIT(traverse_module_state->__pyx_int_59);
+  Py_VISIT(traverse_module_state->__pyx_int_60);
+  Py_VISIT(traverse_module_state->__pyx_int_89);
   Py_VISIT(traverse_module_state->__pyx_int_358398312);
   Py_VISIT(traverse_module_state->__pyx_int_358398319);
   return 0;
@@ -2037,22 +2044,19 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #define __pyx_kp_u_ __pyx_mstate_global->__pyx_kp_u_
 #define __pyx_n_u_2 __pyx_mstate_global->__pyx_n_u_2
-#define __pyx_kp_u_20_29 __pyx_mstate_global->__pyx_kp_u_20_29
-#define __pyx_kp_u_21_40 __pyx_mstate_global->__pyx_kp_u_21_40
 #define __pyx_n_u_2_2 __pyx_mstate_global->__pyx_n_u_2_2
-#define __pyx_kp_u_30_59 __pyx_mstate_global->__pyx_kp_u_30_59
-#define __pyx_kp_u_41_60 __pyx_mstate_global->__pyx_kp_u_41_60
-#define __pyx_kp_u_60_89 __pyx_mstate_global->__pyx_kp_u_60_89
 #define __pyx_n_u__10 __pyx_mstate_global->__pyx_n_u__10
 #define __pyx_n_u__11 __pyx_mstate_global->__pyx_n_u__11
 #define __pyx_n_u__12 __pyx_mstate_global->__pyx_n_u__12
 #define __pyx_n_u__13 __pyx_mstate_global->__pyx_n_u__13
-#define __pyx_n_u__14 __pyx_mstate_global->__pyx_n_u__14
-#define __pyx_n_u__15 __pyx_mstate_global->__pyx_n_u__15
+#define __pyx_kp_u__14 __pyx_mstate_global->__pyx_kp_u__14
+#define __pyx_kp_u__15 __pyx_mstate_global->__pyx_kp_u__15
 #define __pyx_n_u__16 __pyx_mstate_global->__pyx_n_u__16
 #define __pyx_n_u__17 __pyx_mstate_global->__pyx_n_u__17
-#define __pyx_n_s__18 __pyx_mstate_global->__pyx_n_s__18
+#define __pyx_n_u__18 __pyx_mstate_global->__pyx_n_u__18
+#define __pyx_n_u__19 __pyx_mstate_global->__pyx_n_u__19
 #define __pyx_kp_u__2 __pyx_mstate_global->__pyx_kp_u__2
+#define __pyx_n_s__20 __pyx_mstate_global->__pyx_n_s__20
 #define __pyx_n_u__3 __pyx_mstate_global->__pyx_n_u__3
 #define __pyx_n_u__4 __pyx_mstate_global->__pyx_n_u__4
 #define __pyx_n_u__5 __pyx_mstate_global->__pyx_n_u__5
@@ -2060,12 +2064,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_u__7 __pyx_mstate_global->__pyx_n_u__7
 #define __pyx_n_u__8 __pyx_mstate_global->__pyx_n_u__8
 #define __pyx_n_u__9 __pyx_mstate_global->__pyx_n_u__9
-#define __pyx_n_s_api_url __pyx_mstate_global->__pyx_n_s_api_url
 #define __pyx_kp_u_c_5cdab208784f5f4d735eace490690d __pyx_mstate_global->__pyx_kp_u_c_5cdab208784f5f4d735eace490690d
 #define __pyx_kp_u_c_d941630c89637f830aacdab897a4d6 __pyx_mstate_global->__pyx_kp_u_c_d941630c89637f830aacdab897a4d6
+#define __pyx_n_s_calendar_gas_api_url __pyx_mstate_global->__pyx_n_s_calendar_gas_api_url
 #define __pyx_n_s_chatwork_base_url __pyx_mstate_global->__pyx_n_s_chatwork_base_url
 #define __pyx_n_s_check_columns __pyx_mstate_global->__pyx_n_s_check_columns
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
+#define __pyx_n_s_columns_to_replace __pyx_mstate_global->__pyx_n_s_columns_to_replace
 #define __pyx_n_s_default_calendar_ids __pyx_mstate_global->__pyx_n_s_default_calendar_ids
 #define __pyx_kp_u_https_api_chatwork_com_v2 __pyx_mstate_global->__pyx_kp_u_https_api_chatwork_com_v2
 #define __pyx_kp_u_https_script_google_com_macros_s __pyx_mstate_global->__pyx_kp_u_https_script_google_com_macros_s
@@ -2075,6 +2080,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_service_code __pyx_mstate_global->__pyx_n_s_service_code
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
+#define __pyx_int_29 __pyx_mstate_global->__pyx_int_29
+#define __pyx_int_40 __pyx_mstate_global->__pyx_int_40
+#define __pyx_int_59 __pyx_mstate_global->__pyx_int_59
+#define __pyx_int_60 __pyx_mstate_global->__pyx_int_60
+#define __pyx_int_89 __pyx_mstate_global->__pyx_int_89
 #define __pyx_int_358398312 __pyx_mstate_global->__pyx_int_358398312
 #define __pyx_int_358398319 __pyx_mstate_global->__pyx_int_358398319
 /* #### Code section: module_code ### */
@@ -2097,22 +2107,19 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
     {&__pyx_kp_u_, __pyx_k_, sizeof(__pyx_k_), 0, 1, 0, 0},
     {&__pyx_n_u_2, __pyx_k_2, sizeof(__pyx_k_2), 0, 1, 0, 1},
-    {&__pyx_kp_u_20_29, __pyx_k_20_29, sizeof(__pyx_k_20_29), 0, 1, 0, 0},
-    {&__pyx_kp_u_21_40, __pyx_k_21_40, sizeof(__pyx_k_21_40), 0, 1, 0, 0},
     {&__pyx_n_u_2_2, __pyx_k_2_2, sizeof(__pyx_k_2_2), 0, 1, 0, 1},
-    {&__pyx_kp_u_30_59, __pyx_k_30_59, sizeof(__pyx_k_30_59), 0, 1, 0, 0},
-    {&__pyx_kp_u_41_60, __pyx_k_41_60, sizeof(__pyx_k_41_60), 0, 1, 0, 0},
-    {&__pyx_kp_u_60_89, __pyx_k_60_89, sizeof(__pyx_k_60_89), 0, 1, 0, 0},
     {&__pyx_n_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 1},
     {&__pyx_n_u__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 1, 0, 1},
     {&__pyx_n_u__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 1, 0, 1},
     {&__pyx_n_u__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 1, 0, 1},
-    {&__pyx_n_u__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 1, 0, 1},
-    {&__pyx_n_u__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 1, 0, 1},
+    {&__pyx_kp_u__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 1, 0, 0},
+    {&__pyx_kp_u__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 1, 0, 0},
     {&__pyx_n_u__16, __pyx_k__16, sizeof(__pyx_k__16), 0, 1, 0, 1},
     {&__pyx_n_u__17, __pyx_k__17, sizeof(__pyx_k__17), 0, 1, 0, 1},
-    {&__pyx_n_s__18, __pyx_k__18, sizeof(__pyx_k__18), 0, 0, 1, 1},
+    {&__pyx_n_u__18, __pyx_k__18, sizeof(__pyx_k__18), 0, 1, 0, 1},
+    {&__pyx_n_u__19, __pyx_k__19, sizeof(__pyx_k__19), 0, 1, 0, 1},
     {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
+    {&__pyx_n_s__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 0, 1, 1},
     {&__pyx_n_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 1},
     {&__pyx_n_u__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 1, 0, 1},
     {&__pyx_n_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 1},
@@ -2120,12 +2127,13 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 1},
     {&__pyx_n_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 1},
     {&__pyx_n_u__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 1, 0, 1},
-    {&__pyx_n_s_api_url, __pyx_k_api_url, sizeof(__pyx_k_api_url), 0, 0, 1, 1},
     {&__pyx_kp_u_c_5cdab208784f5f4d735eace490690d, __pyx_k_c_5cdab208784f5f4d735eace490690d, sizeof(__pyx_k_c_5cdab208784f5f4d735eace490690d), 0, 1, 0, 0},
     {&__pyx_kp_u_c_d941630c89637f830aacdab897a4d6, __pyx_k_c_d941630c89637f830aacdab897a4d6, sizeof(__pyx_k_c_d941630c89637f830aacdab897a4d6), 0, 1, 0, 0},
+    {&__pyx_n_s_calendar_gas_api_url, __pyx_k_calendar_gas_api_url, sizeof(__pyx_k_calendar_gas_api_url), 0, 0, 1, 1},
     {&__pyx_n_s_chatwork_base_url, __pyx_k_chatwork_base_url, sizeof(__pyx_k_chatwork_base_url), 0, 0, 1, 1},
     {&__pyx_n_s_check_columns, __pyx_k_check_columns, sizeof(__pyx_k_check_columns), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+    {&__pyx_n_s_columns_to_replace, __pyx_k_columns_to_replace, sizeof(__pyx_k_columns_to_replace), 0, 0, 1, 1},
     {&__pyx_n_s_default_calendar_ids, __pyx_k_default_calendar_ids, sizeof(__pyx_k_default_calendar_ids), 0, 0, 1, 1},
     {&__pyx_kp_u_https_api_chatwork_com_v2, __pyx_k_https_api_chatwork_com_v2, sizeof(__pyx_k_https_api_chatwork_com_v2), 0, 1, 0, 0},
     {&__pyx_kp_u_https_script_google_com_macros_s, __pyx_k_https_script_google_com_macros_s, sizeof(__pyx_k_https_script_google_com_macros_s), 0, 1, 0, 0},
@@ -2155,6 +2163,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   if (__Pyx_CreateStringTabAndInitStrings() < 0) __PYX_ERR(0, 2, __pyx_L1_error);
+  __pyx_int_29 = PyInt_FromLong(29); if (unlikely(!__pyx_int_29)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_int_40 = PyInt_FromLong(40); if (unlikely(!__pyx_int_40)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_int_59 = PyInt_FromLong(59); if (unlikely(!__pyx_int_59)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_int_60 = PyInt_FromLong(60); if (unlikely(!__pyx_int_60)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_int_89 = PyInt_FromLong(89); if (unlikely(!__pyx_int_89)) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_int_358398312 = PyInt_FromLong(358398312L); if (unlikely(!__pyx_int_358398312)) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_int_358398319 = PyInt_FromLong(358398319L); if (unlikely(!__pyx_int_358398319)) __PYX_ERR(0, 2, __pyx_L1_error)
   return 0;
@@ -2513,11 +2526,11 @@ if (!__Pyx_RefNanny) {
   /* "libs/const_data.py":3
  * 
  * # GoogleapiURL
- * api_url = 'https://script.google.com/macros/s/AKfycbyO7wJQzdTnQie7at51L5Ex606aq9wHlNDpp6cZ_8qpczpCHsItAUnBf2RrDBgjm0Cl/exec'             # <<<<<<<<<<<<<<
+ * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"             # <<<<<<<<<<<<<<
  * 
  * default_calendar_ids = {
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_api_url, __pyx_kp_u_https_script_google_com_macros_s) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_calendar_gas_api_url, __pyx_kp_u_https_script_google_com_macros_s) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
 
   /* "libs/const_data.py":6
  * 
@@ -2533,98 +2546,121 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_default_calendar_ids, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":11
+  /* "libs/const_data.py":10
+ * }
+ * 
+ * columns_to_replace = ['', '', '']             # <<<<<<<<<<<<<<
  * 
  * #
- * service_code = {'': '20-29',             # <<<<<<<<<<<<<<
- *  '': '30-59',
- *  '': '60-89',
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__3, __pyx_kp_u_20_29) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__4, __pyx_kp_u_30_59) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__5, __pyx_kp_u_60_89) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__6, __pyx_kp_u_21_40) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_2, __pyx_kp_u_41_60) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__7, __pyx_kp_u_20_29) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__8, __pyx_kp_u_30_59) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__9, __pyx_kp_u_60_89) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__10, __pyx_kp_u_21_40) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_2_2, __pyx_kp_u_41_60) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_service_code, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_u__3);
+  __Pyx_GIVEREF(__pyx_n_u__3);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__3)) __PYX_ERR(0, 10, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__4);
+  __Pyx_GIVEREF(__pyx_n_u__4);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__4)) __PYX_ERR(0, 10, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__5);
+  __Pyx_GIVEREF(__pyx_n_u__5);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__5)) __PYX_ERR(0, 10, __pyx_L1_error);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_columns_to_replace, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":26
+  /* "libs/const_data.py":14
+ * #
+ * service_code = {
+ *  '': 29,             # <<<<<<<<<<<<<<
+ *  '': 59,
+ *  '': 89,
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__6, __pyx_int_29) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__7, __pyx_int_59) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__8, __pyx_int_89) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__9, __pyx_int_40) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_2, __pyx_int_60) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__10, __pyx_int_29) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__11, __pyx_int_59) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__12, __pyx_int_89) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u__13, __pyx_int_40) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_2_2, __pyx_int_60) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__14, __pyx_int_60) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__15, __pyx_int_40) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_service_code, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "libs/const_data.py":32
  * # ID
  * managers = {
  *     '': 358398312,             # <<<<<<<<<<<<<<
  *     '': 358398319
  * }
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_, __pyx_int_358398312) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__2, __pyx_int_358398319) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_managers, __pyx_t_2) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_, __pyx_int_358398312) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__2, __pyx_int_358398319) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_managers, __pyx_t_2) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":31
+  /* "libs/const_data.py":37
  * 
  * #
- * key_columns = ['', '', '', '']             # <<<<<<<<<<<<<<
+ * key_columns = ['', '', '']             # <<<<<<<<<<<<<<
  * #
- * check_columns = ['', '', '']
+ * check_columns = ['', '', '', '']
  */
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_u__11);
-  __Pyx_GIVEREF(__pyx_n_u__11);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__11)) __PYX_ERR(0, 31, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_n_u__12);
-  __Pyx_GIVEREF(__pyx_n_u__12);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__12)) __PYX_ERR(0, 31, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_n_u__13);
-  __Pyx_GIVEREF(__pyx_n_u__13);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__13)) __PYX_ERR(0, 31, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_n_u__14);
-  __Pyx_GIVEREF(__pyx_n_u__14);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_u__14)) __PYX_ERR(0, 31, __pyx_L1_error);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_key_columns, __pyx_t_2) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_u__16);
+  __Pyx_GIVEREF(__pyx_n_u__16);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__16)) __PYX_ERR(0, 37, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__4);
+  __Pyx_GIVEREF(__pyx_n_u__4);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__4)) __PYX_ERR(0, 37, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__3);
+  __Pyx_GIVEREF(__pyx_n_u__3);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__3)) __PYX_ERR(0, 37, __pyx_L1_error);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_key_columns, __pyx_t_2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":33
- * key_columns = ['', '', '', '']
+  /* "libs/const_data.py":39
+ * key_columns = ['', '', '']
  * #
- * check_columns = ['', '', '']             # <<<<<<<<<<<<<<
+ * check_columns = ['', '', '', '']             # <<<<<<<<<<<<<<
  * 
  * # ChatworkAPIURL
  */
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_u__15);
-  __Pyx_GIVEREF(__pyx_n_u__15);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__15)) __PYX_ERR(0, 33, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_n_u__16);
-  __Pyx_GIVEREF(__pyx_n_u__16);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__16)) __PYX_ERR(0, 33, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__17);
   __Pyx_GIVEREF(__pyx_n_u__17);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__17)) __PYX_ERR(0, 33, __pyx_L1_error);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_columns, __pyx_t_2) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__17)) __PYX_ERR(0, 39, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__18);
+  __Pyx_GIVEREF(__pyx_n_u__18);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__18)) __PYX_ERR(0, 39, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__19);
+  __Pyx_GIVEREF(__pyx_n_u__19);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__19)) __PYX_ERR(0, 39, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_n_u__5);
+  __Pyx_GIVEREF(__pyx_n_u__5);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_u__5)) __PYX_ERR(0, 39, __pyx_L1_error);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_columns, __pyx_t_2) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":36
+  /* "libs/const_data.py":42
  * 
  * # ChatworkAPIURL
  * chatwork_base_url = "https://api.chatwork.com/v2"             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chatwork_base_url, __pyx_kp_u_https_api_chatwork_com_v2) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chatwork_base_url, __pyx_kp_u_https_api_chatwork_com_v2) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
 
   /* "libs/const_data.py":2
  * 
  * # GoogleapiURL             # <<<<<<<<<<<<<<
- * api_url = 'https://script.google.com/macros/s/AKfycbyO7wJQzdTnQie7at51L5Ex606aq9wHlNDpp6cZ_8qpczpCHsItAUnBf2RrDBgjm0Cl/exec'
+ * calendar_gas_api_url = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"
  * 
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
@@ -3198,7 +3234,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__18);
+        name = __Pyx_NewRef(__pyx_n_s__20);
     }
     return name;
 }
