@@ -2591,71 +2591,71 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_service_code, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":32
+  /* "libs/const_data.py":30
  * # ID
  * managers = {
  *     '': 358398312,             # <<<<<<<<<<<<<<
  *     '': 358398319
  * }
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_, __pyx_int_358398312) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__2, __pyx_int_358398319) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_managers, __pyx_t_2) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_, __pyx_int_358398312) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u__2, __pyx_int_358398319) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_managers, __pyx_t_2) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":37
+  /* "libs/const_data.py":35
  * 
  * #
  * key_columns = ['', '', '']             # <<<<<<<<<<<<<<
  * #
  * check_columns = ['', '', '', '']
  */
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u__16);
   __Pyx_GIVEREF(__pyx_n_u__16);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__16)) __PYX_ERR(0, 37, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__16)) __PYX_ERR(0, 35, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__4);
   __Pyx_GIVEREF(__pyx_n_u__4);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__4)) __PYX_ERR(0, 37, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__4)) __PYX_ERR(0, 35, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__3);
   __Pyx_GIVEREF(__pyx_n_u__3);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__3)) __PYX_ERR(0, 37, __pyx_L1_error);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_key_columns, __pyx_t_2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__3)) __PYX_ERR(0, 35, __pyx_L1_error);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_key_columns, __pyx_t_2) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":39
+  /* "libs/const_data.py":37
  * key_columns = ['', '', '']
  * #
  * check_columns = ['', '', '', '']             # <<<<<<<<<<<<<<
  * 
  * # ChatworkAPIURL
  */
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u__17);
   __Pyx_GIVEREF(__pyx_n_u__17);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__17)) __PYX_ERR(0, 39, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u__17)) __PYX_ERR(0, 37, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__18);
   __Pyx_GIVEREF(__pyx_n_u__18);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__18)) __PYX_ERR(0, 39, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u__18)) __PYX_ERR(0, 37, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__19);
   __Pyx_GIVEREF(__pyx_n_u__19);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__19)) __PYX_ERR(0, 39, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u__19)) __PYX_ERR(0, 37, __pyx_L1_error);
   __Pyx_INCREF(__pyx_n_u__5);
   __Pyx_GIVEREF(__pyx_n_u__5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_u__5)) __PYX_ERR(0, 39, __pyx_L1_error);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_columns, __pyx_t_2) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_u__5)) __PYX_ERR(0, 37, __pyx_L1_error);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_columns, __pyx_t_2) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "libs/const_data.py":42
+  /* "libs/const_data.py":40
  * 
  * # ChatworkAPIURL
  * chatwork_base_url = "https://api.chatwork.com/v2"             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chatwork_base_url, __pyx_kp_u_https_api_chatwork_com_v2) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chatwork_base_url, __pyx_kp_u_https_api_chatwork_com_v2) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
 
   /* "libs/const_data.py":2
  * 
