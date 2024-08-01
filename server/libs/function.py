@@ -96,9 +96,12 @@ def get_dataframes(file_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # CSVファイルを読み込んで整形したibowデータフレームを作成
     try:
-        ibow_df = pd.read_csv(file_path,
+        ibow_df = pd.read_csv(file_path, encoding='utf-8',
                               usecols=["訪問日", "利用者名", "開始時間", "終了時間", "提供時間", "サービス内容",
                                        "主訪問者"])
+    except UnicodeDecodeError:
+        messagebox.showerror("エラー", "Ibowのファイルの文字コードが誤っています。UTF-8形式のファイルを選択してください。")
+        raise ValueError("Ibowのファイルの文字コードが誤っています。UTF-8形式のファイルを選択してください。")
     except Exception:
         messagebox.showerror("エラー", "Ibowのファイルが誤っています。正しいファイルが選択されているか確認してください。")
         raise ValueError("Ibowのファイルが誤っています。正しいファイルが選択されているか確認してください。")
