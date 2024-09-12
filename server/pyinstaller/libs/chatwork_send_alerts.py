@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from server.libs.const_data import managers, chatwork_base_url
+from server.archive.const_data import managers, chatwork_base_url
 
 
 # メッセージを送信

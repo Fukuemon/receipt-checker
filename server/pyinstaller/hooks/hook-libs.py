@@ -4,6 +4,4 @@ hiddenimports = [
     'pandas',
     'csv',
     'pyloudnorm',
-    'libs.function',
-    'libs.const_data',
 ]
