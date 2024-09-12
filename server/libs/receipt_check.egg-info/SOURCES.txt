@@ -1,0 +1,5 @@
+setup.py
+libs/receipt_check.egg-info/PKG-INFO
+libs/receipt_check.egg-info/SOURCES.txt
+libs/receipt_check.egg-info/dependency_links.txt
+libs/receipt_check.egg-info/top_level.txt

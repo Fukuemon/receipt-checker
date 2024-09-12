@@ -1,27 +1,12 @@
 import requests
 import pandas as pd
-from server.libs.const_data import key_columns, check_columns, calendar_gas_api_url, columns_to_replace
+from server.archive.const_data import key_columns, check_columns, calendar_gas_api_url, columns_to_replace, VALID_TIME_RANGES
 import io
 from pathlib import Path
 from tkinter import messagebox
 import re
 
 # 定数として時間範囲を定義
-VALID_TIME_RANGES = {
-    '訪看I２': (20, 29),
-    '予防訪看I２': (20, 29),
-    '訪看I３': (30, 59),
-    '予防訪看I３': (30, 59),
-    '訪看I４': (60, 89),
-    '予防訪看I４': (60, 89),
-    '訪看I５': (21, 40),
-    '予防訪看I５': (21, 40),
-    '訪看I５・２超': (41, 60),
-    '予防訪看I５・２超': (41, 60),
-    '基本療養費': (30, 89),
-    '医': (30, 89),
-    '難病等複数回訪問加算(２回)': (40, 40)
-}
 
 # 半角数字を全角数字に変換する関数
 def to_fullwidth_numbers(text):
@@ -32,9 +17,11 @@ def to_fullwidth_numbers(text):
 # サービス内容の置き換え
 def replace_service_content(service):
     if isinstance(service, str):
-        service = re.sub(r'[Ⅰ１1]', 'I', service)
+        service = re.sub(r'[Ⅰ１1]', 'I', service) # 1をIに変換
+        service = re.sub(r'･', '・', service) # 半角ドットを全角ドットに変換
         service = to_fullwidth_numbers(service)
     return service
+
 
 def receipt_check(receipt_file):
     calendar_df, ibow_df = get_dataframes(receipt_file)
@@ -43,7 +30,7 @@ def receipt_check(receipt_file):
         ["訪問日", "利用者名", "主訪問者", "サービス内容_Ibow", "サービス内容_カレンダー", "開始時間_Ibow",
          "開始時間_カレンダー",
          "終了時間_Ibow", "終了時間_カレンダー",
-         "提供時間_Ibow", "提供時間_カレンダー"]]
+         "提供時間_Ibow", "提供時間_カレンダー", "加算①", "加算②"]]
     return results_df
 
 def create_google_calendar_to_csv():
@@ -98,7 +85,7 @@ def get_dataframes(file_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     try:
         ibow_df = pd.read_csv(file_path, encoding='utf-8',
                               usecols=["訪問日", "利用者名", "開始時間", "終了時間", "提供時間", "サービス内容",
-                                       "主訪問者"])
+                                       "主訪問者", "加算①", "加算②"])
     except UnicodeDecodeError:
         messagebox.showerror("エラー", "Ibowのファイルの文字コードが誤っています。UTF-8形式のファイルを選択してください。")
         raise ValueError("Ibowのファイルの文字コードが誤っています。UTF-8形式のファイルを選択してください。")
@@ -127,11 +114,11 @@ def validate_service_time(service, time):
     :return: (bool, str) チェック結果と有効範囲の文字列
     """
     for key, (start, end) in VALID_TIME_RANGES.items():
-        if key in service:
+        if key == service:
             if start <= time <= end:
-                return True, f"({start}~{end})"
+                return True, f"(:({start}~{end}))"
             else:
-                return False, f"({start}~{end})"
+                return False, f"(:({start}~{end}))"
     return False, ""
 
 def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.DataFrame:
@@ -184,9 +171,9 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
                 row[column + '_カレンダー'] = str(row[column + '_カレンダー']) + ' ❌'
                 row[column + '_Ibow'] = str(row[column + '_Ibow']) + ' ❌'
         if row['カレンダー_サービス時間_match'] is False:
-            row['提供時間_カレンダー'] = f"{row['提供時間_カレンダー']} (Invalid: {row['カレンダー_有効範囲']}) ❌"
+            row['提供時間_カレンダー'] = f"{row['提供時間_カレンダー']} (不正 {row['カレンダー_有効範囲']}) ❌"
         if row['Ibow_サービス時間_match'] is False:
-            row['提供時間_Ibow'] = f"{row['提供時間_Ibow']} (Invalid: {row['Ibow_有効範囲']}) ❌"
+            row['提供時間_Ibow'] = f"{row['提供時間_Ibow']} (不正 {row['Ibow_有効範囲']}) ❌"
         return row
 
     # 不整合データをフィルタリングし、❌をつける

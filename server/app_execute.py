@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import customtkinter
 import os
-from server.libs.function import receipt_check
+from server.libs.receipt_check import receipt_check
 
 FONT_TYPE = "meiryo"
 PRIMARY = "blue"

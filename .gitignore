@@ -1,3 +1,8 @@
 __pycache__
 .idea
 .DS_Store
+server/build
+server/notebook
+server/dist
+server/app_execute.spec
+server/build.spec
