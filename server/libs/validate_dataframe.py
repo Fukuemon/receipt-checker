@@ -26,6 +26,10 @@ def validate_service_time(service, time):
     :param time: 提供時間
     :return: (bool, str) チェック結果と有効範囲の文字列
     """
+    # サービス内容がNaN（空の値）またはfloat型（不正な値）であれば、Falseを返す
+    if pd.isna(service) or isinstance(service, float):
+        return False, ""
+
     # サービス内容が特定の文字列を含む場合、対応するキーを設定
     if '基本療養費' in service:
         key = '基本療養費'
@@ -71,6 +75,9 @@ def validate_end_time(service, start_time, end_time):
     :param end_time: 終了時間 (フォーマット: "HH:MM")
     :return: (bool, str) チェック結果と有効範囲の文字列
     """
+    if pd.isna(service) or isinstance(service, float):
+        return False, ""
+
     # サービス内容が特定の文字列を含む場合、対応するキーを設定
     if '基本療養費' in service:
         key = '基本療養費'
@@ -109,10 +116,13 @@ def check_columns(merged_df: pd.DataFrame) -> pd.DataFrame:
     for column in CHECK_COLUMNS:
         if column == 'サービス内容':
             validate_df.loc[:, column + '_match'] = validate_df.apply(
-                lambda row: row[column + '_カレンダー'] == row[column + '_Ibow'] or
-                            (row[column + '_カレンダー'] == '医' and
-                             ('基本療養費' in row[column + '_Ibow'] or
-                              '難病等複数回訪問' in row[column + '_Ibow'])), axis=1)
+                lambda row: (
+                    row[column + '_カレンダー'] == row[column + '_Ibow'] or
+                    (row[column + '_カレンダー'] == '医' and
+                     isinstance(row[column + '_Ibow'], str) and  # 型チェックを追加
+                     ('基本療養費' in row[column + '_Ibow'] or
+                      '難病等複数回訪問' in row[column + '_Ibow']))
+                ), axis=1)
         elif column == "開始時間":
             validate_df.loc[:, column + '_match'] = validate_df[column + '_カレンダー'] == validate_df[column + '_Ibow']
             validate_df = validate_service_times(validate_df)
