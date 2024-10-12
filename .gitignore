@@ -4,3 +4,4 @@ __pycache__
 server/build
 server/notebook
 server/dist
+.env

@@ -1,4 +1,7 @@
-CALENDER_GAS_API_URL = "https://script.google.com/macros/s/AKfycbwanC_EH2aK7gJa97KJhOsM-CCqocDYxPY6ZaAlDie-uKDDxPkgtlvR-1IC3SajM9xPYw/exec"
+from dotenv import load_dotenv
+import os
+load_dotenv()
+CALENDER_GAS_API_URL = os.getenv("CALENDER_GAS_API_URL") # 本番環境
 
 USE_IBOW_COLUMNS = ["訪問日", "利用者名", "開始時間", "終了時間", "提供時間", "サービス内容", "主訪問者", "加算①", "加算②", "加算③", "加算④", "加算⑤"]
 COLUMNS_TO_DATETIME = ['開始時間', '終了時間']
@@ -32,7 +35,7 @@ SERVICE_CODE_VALID_TIME_RANGES = {
 
 MERGE_KEY_COLUMNS = ['訪問日', '利用者名', '主訪問者']
 
-MATCH_COLUMNS = ['開始時間', '終了時間', '提供時間', 'サービス内容']
+MATCH_COLUMNS = ['開始時間', '提供時間', 'サービス内容']
 
 CHECK_COLUMNS = ['開始時間', '終了時間', '提供時間', 'サービス内容', "加算"]
 
