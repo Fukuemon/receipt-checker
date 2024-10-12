@@ -4,5 +4,4 @@ __pycache__
 server/build
 server/notebook
 server/dist
-server/app_execute.spec
-server/build.spec
+.env

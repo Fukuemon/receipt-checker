@@ -26,6 +26,10 @@ def validate_service_time(service, time):
     :param time: 提供時間
     :return: (bool, str) チェック結果と有効範囲の文字列
     """
+    # サービス内容がNaN（空の値）またはfloat型（不正な値）であれば、Falseを返す
+    if pd.isna(service) or isinstance(service, float):
+        return False, ""
+
     # サービス内容が特定の文字列を含む場合、対応するキーを設定
     if '基本療養費' in service:
         key = '基本療養費'
@@ -71,6 +75,9 @@ def validate_end_time(service, start_time, end_time):
     :param end_time: 終了時間 (フォーマット: "HH:MM")
     :return: (bool, str) チェック結果と有効範囲の文字列
     """
+    if pd.isna(service) or isinstance(service, float):
+        return False, ""
+
     # サービス内容が特定の文字列を含む場合、対応するキーを設定
     if '基本療養費' in service:
         key = '基本療養費'
@@ -109,20 +116,32 @@ def check_columns(merged_df: pd.DataFrame) -> pd.DataFrame:
     for column in CHECK_COLUMNS:
         if column == 'サービス内容':
             validate_df.loc[:, column + '_match'] = validate_df.apply(
-                lambda row: row[column + '_カレンダー'] == row[column + '_Ibow'] or
-                            (row[column + '_カレンダー'] == '医' and
-                             ('基本療養費' in row[column + '_Ibow'] or
-                              '難病等複数回訪問' in row[column + '_Ibow'])), axis=1)
+                lambda row: (
+                    row[column + '_カレンダー'] == row[column + '_Ibow'] or
+                    (row[column + '_カレンダー'] == '医' and
+                     isinstance(row[column + '_Ibow'], str) and  # 型チェックを追加
+                     ('基本療養費' in row[column + '_Ibow'] or
+                      '難病等複数回訪問' in row[column + '_Ibow']))
+                ), axis=1)
         elif column == "開始時間":
             validate_df.loc[:, column + '_match'] = validate_df[column + '_カレンダー'] == validate_df[column + '_Ibow']
-            validate_df = validate_service_times(validate_df)
         elif column == "終了時間":
-            validate_df.loc[:, '終了時間_match'], validate_df.loc[:, '終了時間_有効範囲'] = zip(*validate_df.apply(
+            validate_df.loc[:, column + '_match'] = validate_df[column + '_カレンダー'] == validate_df[column + '_Ibow']
+            validate_df.loc[:, '終了時間_カレンダー_match'], validate_df.loc[:, '終了時間_カレンダー_有効範囲'] = zip(*validate_df.apply(
                 lambda row: validate_end_time(
                     row['サービス内容_カレンダー'],
                     row['開始時間_カレンダー'],
                     row['終了時間_カレンダー']
                 ), axis=1))
+            validate_df.loc[:, '終了時間_Ibow_match'], validate_df.loc[:, '終了時間_Ibow_有効範囲'] = zip(*validate_df.apply(
+                lambda row: validate_end_time(
+                    row['サービス内容_Ibow'],
+                    row['開始時間_Ibow'],
+                    row['終了時間_Ibow']
+                ), axis=1))
+        elif column == "提供時間":
+            validate_df.loc[:, column + '_match'] = validate_df[column + '_カレンダー'] == validate_df[column + '_Ibow']
+            validate_df = validate_service_times(validate_df)
         elif column == "加算":
             validate_df.loc[:, '加算_check'] = validate_df[column].apply(lambda x: x == '通常')
         else:
@@ -141,17 +160,21 @@ def mark_mismatches(merged_df: pd.DataFrame) -> pd.DataFrame:
             if row[column + '_match'] is False:
                 row[column + '_カレンダー'] = str(row[column + '_カレンダー']) + ' ❌'
                 row[column + '_Ibow'] = str(row[column + '_Ibow']) + ' ❌'
+        if row["終了時間_カレンダー_match"] is False:
+            row["終了時間_カレンダー"] = f"{row['終了時間_カレンダー']} ❌ ({row['終了時間_カレンダー_有効範囲']})"
+        if row["終了時間_Ibow_match"] is False:
+            row["終了時間_Ibow"] = f"{row['終了時間_Ibow']} ❌ ({row['終了時間_Ibow_有効範囲']})"
         if row['カレンダー_サービス時間_match'] is False:
-            row['提供時間_カレンダー'] = f"{row['提供時間_カレンダー']} (不正 {row['カレンダー_有効範囲']}) ❌"
+            row['提供時間_カレンダー'] = f"{row['提供時間_カレンダー']}  ❌ ({row['カレンダー_有効範囲']})"
         if row['Ibow_サービス時間_match'] is False:
-            row['提供時間_Ibow'] = f"{row['提供時間_Ibow']} (不正 {row['Ibow_有効範囲']}) ❌"
+            row['提供時間_Ibow'] = f"{row['提供時間_Ibow']} ❌ ({row['Ibow_有効範囲']})"
         if row['加算_check'] is False:
             row['加算'] = f"{row['加算']} ※"
         return row
 
     mismatched_df = merged_df[(merged_df['開始時間_match'] == False) |
-                              (merged_df['終了時間_match'] == False) |
-                              (merged_df['提供時間_match'] == False) |
+                              (merged_df['終了時間_カレンダー_match'] == False) |
+                              (merged_df['終了時間_Ibow_match'] == False) |
                               (merged_df['サービス内容_match'] == False) |
                               (merged_df['カレンダー_サービス時間_match'] == False) |
                               (merged_df["加算_check"] == False) |
@@ -180,16 +203,31 @@ def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.D
     # データのvalidation
     validate_df = check_columns(merged_df)
 
+
+
     # 不整合データにマークを追加
     mismatched_df = mark_mismatches(validate_df)
 
+
+    print(validate_df.columns)
+
+    def mark_match(row):
+        if row["提供時間_match"] is False and row["カレンダー_サービス時間_match"] is True and row["Ibow_サービス時間_match"] is True:
+            row["提供時間_カレンダー"] = f"{row['提供時間_カレンダー']} ※ ({row['カレンダー_有効範囲']})"
+            row["提供時間_Ibow"] = f"{row['提供時間_Ibow']} ※ ({row['Ibow_有効範囲']})"
+        if row["終了時間_match"] is False and row["終了時間_Ibow_match"] is True and row["終了時間_カレンダー_match"] is True:
+            row["終了時間_カレンダー"] = f"{row['終了時間_カレンダー']} ※"
+            row["終了時間_Ibow"] = f"{row['終了時間_Ibow']} ※"
+
+        return row
     # 整合データの抽出
     matched_df = validate_df[(validate_df['開始時間_match'] == True) &
-                             (validate_df['終了時間_match'] == True) &
-                             (validate_df['提供時間_match'] == True) &
                              (validate_df['サービス内容_match'] == True) &
+                             (validate_df['終了時間_カレンダー_match'] == True) &
+                             (validate_df['終了時間_Ibow_match'] == True) &
                              (validate_df['カレンダー_サービス時間_match'] == True) &
-                             (validate_df['Ibow_サービス時間_match'] == True)]
+                             (validate_df['Ibow_サービス時間_match'] == True) &
+                             (validate_df["加算_check"] == True)].apply(mark_match, axis=1)
 
     # 境界データフレームの作成
     boundary_mismatched_df = create_boundary_dataframe('不整合データ', merged_df.columns)
