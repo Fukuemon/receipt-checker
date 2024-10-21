@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+from datetime import timedelta
 from .constant import  COLUMNS_TO_DATETIME, COLUMNS_TO_REPLACES
 
 
@@ -103,5 +104,20 @@ def format_dataframes(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> tuple
     # 各データフレームをフォーマットする
     format_calendar_df = format_dataframe(calendar_df)
     format_ibow_df = format_dataframe(ibow_df)
+
+    # 特定のサービスに対してのみ終了時間と提供時間を1分減らす
+    services_to_adjust = ['訪看I２', '予防看I２', '予訪看I２', '予防訪看I２',
+                          '訪看I３', '予防看I３', '予訪看I３', '予防訪看I３',
+                          '訪看I４', '予防看I４', '予訪看I４', '予防訪看I４']
+
+    # 該当するサービスの終了時間を1分減らす
+    format_calendar_df.loc[format_calendar_df['サービス内容'].isin(services_to_adjust), '終了時間'] = \
+        format_calendar_df.loc[format_calendar_df['サービス内容'].isin(services_to_adjust), '終了時間'].apply(
+            lambda x: (pd.to_datetime(x, format="%H:%M") - timedelta(minutes=1)).strftime("%H:%M")
+        )
+
+    # 該当するサービスの提供時間（int）を1分減らす
+    format_calendar_df.loc[format_calendar_df['サービス内容'].isin(services_to_adjust), '提供時間'] = \
+        format_calendar_df.loc[format_calendar_df['サービス内容'].isin(services_to_adjust), '提供時間'] - 1
 
     return format_calendar_df, format_ibow_df
