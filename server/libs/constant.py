@@ -1,7 +1,11 @@
 from dotenv import load_dotenv
+from os.path import dirname, join
 import os
-load_dotenv()
-CALENDER_GAS_API_URL = os.getenv("CALENDER_GAS_API_URL") # 本番環境
+
+load_dotenv(verbose=True)
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+CALENDER_GAS_API_URL = os.environ.get("CALENDER_GAS_API_URL") # 本番環境
 
 USE_IBOW_COLUMNS = ["訪問日", "利用者名", "開始時間", "終了時間", "提供時間", "サービス内容", "主訪問者", "加算①", "加算②", "加算③", "加算④", "加算⑤"]
 COLUMNS_TO_DATETIME = ['開始時間', '終了時間']
