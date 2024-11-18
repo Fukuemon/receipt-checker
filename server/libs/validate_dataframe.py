@@ -194,7 +194,6 @@ def create_boundary_dataframe(label: str, columns: list) -> pd.DataFrame:
 def merge_and_validate(calendar_df: pd.DataFrame, ibow_df: pd.DataFrame) -> pd.DataFrame:
     merged_df = merge_dataframes(calendar_df, ibow_df)
 
-    #
     calendar_only_df, ibow_only_df = filter_mismatched_data(merged_df)
 
     # matchしているデータのみ抽出
